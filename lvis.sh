@@ -109,6 +109,13 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 lsmod | grep bbr
 
+# firewall settings
+ufw app list
+ufw allow OpenSSH
+ufw allow "Nginx HTTPS"
+echo "y" | sudo ufw enable
+ufw status
+
 # last piece
 echo "Successfully installed v2ray"
 echo "uuid:"
