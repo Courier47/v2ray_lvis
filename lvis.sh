@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # get user input for domain and generate uuid
-echo "type domain without \e[1;31mwww\e[0m and perss enter:"
+echo -e "type domain without \e[1;31mwww\e[0m and perss enter:"
 read domain
 apt-get update
 apt-get --assume-yes upgrade
@@ -12,6 +12,7 @@ apt-get --assume-yes install socat
 bash <(curl -L -s https://get.acme.sh)
 source ~/.bashrc
 ~/.acme.sh/acme.sh --issue -d "$domain" --standalone -k ec-256
+echo "installing certifations for $domain"
 ~/.acme.sh/acme.sh --installcert -d "$domain" --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
 
 # install nginx and set default config file
